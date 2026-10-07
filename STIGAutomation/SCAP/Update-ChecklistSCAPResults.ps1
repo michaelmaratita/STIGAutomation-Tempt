@@ -49,7 +49,8 @@ function Update-ChecklistSCAPResults {
 
     foreach ($Rule in $Checklist.stigs.rules) {
 
-        $RuleID = $Rule.rule_id_src
+        # rule_id_src example: SV-225225r961038_rule
+        $RuleID = [string]$Rule.rule_id_src
 
         if ($SCAPInfo.SCAP_Results.Contains($RuleID)) {
 

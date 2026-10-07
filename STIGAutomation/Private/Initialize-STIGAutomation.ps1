@@ -24,6 +24,7 @@ function Initialize-STIGAutomation {
 
     $null = gpresult /h $script:STIGAutomation.GPResultPath /f 2>&1
 
+
     if ($LASTEXITCODE -ne 0) {
         throw "gpresult failed with exit code $LASTEXITCODE."
     }
@@ -50,4 +51,6 @@ function Initialize-STIGAutomation {
                 Out-Null
         }
     }
+
+    # Copy-Item -Path "$PSScriptRoot\..\Templates\BlankChecklist\*" -Destination $script:STIGAutomation.BlankChecklistPath
 }

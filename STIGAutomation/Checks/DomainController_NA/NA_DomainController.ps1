@@ -5,24 +5,27 @@ function Set-DomainControllerChecksNA {
         [hashtable]$Results,
 
         [Parameter(Mandatory)]
-        [string[]]$VulNums
+        [string[]]$VulNums,
+
+        [Parameter(Mandatory)]
+        [string]$Comment
     )
 
-    $AD = get-windowsfeature `
-            -Name AD-Domain-Services | 
-                Select-Object DisplayName, `
-                              Name, `
-                            Installed
+    $AD = Get-WindowsFeature `
+        -Name AD-Domain-Services | 
+        Select-Object DisplayName, 
+                      Name, 
+                      Installed
+
+    $Comment = $Comment `
+                -replace '{COMPUTERNAME}', $env:COMPUTERNAME`
+                -replace '{ActiveDirectory}', "$($AD | Format-List | Out-String)"
+
     foreach ($VulNum in $VulNums) {
 
         $Results[$VulNum] = [ordered]@{
             Status  = "not_applicable"
-            Comment = @"
-$env:ComputerName is NOT a Domain Controller.
-
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-$($AD | Format-List | Out-String)
-"@
+            Comment = $Comment
         }
     }
 

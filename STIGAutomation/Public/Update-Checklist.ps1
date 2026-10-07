@@ -8,11 +8,9 @@ function Update-Checklist {
         [ValidateSet('Server2022', 'DotNetFramework')]
         [string]$Type
     )
-
-    $STIGData = Import-PowerShellDataFile `
-        -Path "$PSScriptRoot\..\Data\STIGSettings.psd1"
-        
-    $Function = $STIGData[$Type].Function
+    
+    $STIGData = Get-STIGSettings -Type $Type
+    $Function = $STIGData.Function
 
     $Results = & $Function
     $FindingDetails = Get-FindingDetails

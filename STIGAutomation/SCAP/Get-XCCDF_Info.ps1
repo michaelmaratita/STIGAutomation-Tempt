@@ -10,7 +10,7 @@ function Get-XCCDF_Info {
 
     $HostFacts = $XCCDF.ChildNodes.TestResult.'target-facts'.fact
 
-    $SCAPResults = Get-SCAPResult -XML $XCCDF
+    $SCAPResults = Get-SCAPResult -XML $XCCDF -Type $Type
 
     return [ordered]@{
         Name         = ($HostFacts | Where-Object Name -Like '*host_name').'#text'

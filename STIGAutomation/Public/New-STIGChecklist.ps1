@@ -41,7 +41,8 @@ function New-STIGChecklist {
     Write-Verbose 'Generating checklist...'
 
     Export-STIGChecklist `
-        -Checklist $Checklist
+        -Checklist $Checklist `
+        -Type $Type
     
     Write-Verbose 'STIG checklist generation complete.'
 

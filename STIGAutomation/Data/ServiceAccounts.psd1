@@ -12,10 +12,12 @@
         'svc_ecom_acas'
         )
     'AEPPECOMAPJIRA01' = @(
-        'svc_ecom_acas'
+        'svc_ecom_acas',
+        'svc_ecom_jira'
         )
     'AEPRECSAPJIRA01' = @(
-        'svc_ecom_acas'
+        'svc_ecom_acas',
+        'svc_ecom_jira'
         )
     'AEDVECOMAPHC01' = @(
         'svc_ecom_acas'

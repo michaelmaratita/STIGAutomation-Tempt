@@ -2,20 +2,32 @@ function Get-SCAPResult {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [xml]$XML
+        [xml]$XML,
+
+        [Parameter(Mandatory)]
+        [ValidateSet('Server2022', 'DotNetFramework')]
+        [string]$Type
     )
+
+    $STIGData = Get-STIGSettings -Type $Type
+    $RuleResults = $XML
+    $Substring = $STIGData.Substring
+
+    foreach ($Property in $STIGData.RuleResult) {
+        
+        $RuleResults = $RuleResults.$Property
+
+    }
 
     $SCAPResults = [ordered]@{}
 
-    foreach ($Vulnerability in $XML.ChildNodes.TestResult.'rule-result') {
+    # foreach ($Vulnerability in $XML.ChildNodes.TestResult.'rule-result') {
+    foreach ($Result in $RuleResults){
 
-        $RuleID = $Vulnerability.idref
-
-        # Preserve your existing ID extraction logic.
-        $RuleID = $RuleID.Substring(15, 31).Substring(10, 21)
+        $RuleID = $Result.idref.Substring($Substring)
 
         $SCAPResults[$RuleID] = [ordered]@{
-            Result = [string]$Vulnerability.result
+            Result = [string]$Result.result
         }
     }
 
