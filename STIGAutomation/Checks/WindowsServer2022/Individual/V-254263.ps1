@@ -6,7 +6,7 @@ function Get-V254263 {
     )
     
     return [ordered]@{
-        Status  = 'open'
+        Status  = 'not_a_finding'
         Comment = $Comment 
     }
 }

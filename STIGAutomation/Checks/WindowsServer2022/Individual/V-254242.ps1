@@ -10,7 +10,7 @@ function Get-V254242 {
     $PowerShellCommand = $Comment.PowerShellCommand `
                             -replace '{OUTPUT}', $($PwPolicy | Out-String)
 
-    if ($default_pw_policy.MinPasswordLength -ge 14){
+    if ($PwPolicy.MinPasswordLength -ge 14){
         
         $Status = 'not_a_finding'
         $CommentText = $Comment.NotAFinding `

@@ -740,7 +740,7 @@ to be granted login access to the servers hosted in Amazon Web Service (AWS). An
 attempts to login outside of AVHE/AVHE-Labs will fail to connect to the instance.
 
 
-MUST FIND REFERENCE DOCUMENATION TO ANNOTATE HERE!
+Reference Doc: 'DHA ECS, System & Communication (SC) Policy and Procedures, Section 3.8.2 SC-08(02) Transmission Confidentiality and Integrity | Pre- and Post-transmission'
 "@
 ###############################################################################
     V254264 = @{
