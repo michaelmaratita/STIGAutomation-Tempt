@@ -22,6 +22,7 @@
             'MHS\DCOPS IaaS eCommerce Admins'
             'MHS\ECOM_RDP_TOOLS'
             'MHS\svc_cas_clientpush'
+            'MHS\svc_ecom_jira'
 
         )
         'SECURITY' = @(
@@ -41,6 +42,7 @@ MHS\svc_cas_clientpush          - Software Center Service Account
 MHS\DCOPS IaaS eCommerce Admins - Architecture (OS Admins)
 MHS\ECOM_RDP_TOOLS              - Application Admins (APP/DBA)
 MHS\svc_cas_clientpush          - Software Center Service Account
+MHS\svc_ecom_jira               - JIRA Application Service Account 
 "@
         'SECURITY' = @"
 MHS\DCOPS IaaS eCommerce Admins - Architecture (OS Admins)
